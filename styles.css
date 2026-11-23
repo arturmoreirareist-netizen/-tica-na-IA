@@ -1,0 +1,391 @@
+        /* 1. PALETA DE CORES PERSONALIZADA (MODO ESCURO) */
+        :root {
+            --cor-lavanda: #0093A7;      
+            --cor-azul-claro: #00B1C4;   
+            --cor-vermelha: #B72818;     
+            --cor-laranja: #84BD26;      
+            --cor-azul-indigo: #0060B6;  
+            --cor-fundo-escuro: #001E3D; /* Tom escuro profundo para o fundo principal */
+            
+            --cor-texto-claro: #ffffff;
+            --cor-texto-escuro: #e8eaed; /* Texto claro para leitura no fundo escuro */
+            --cor-fundo-suave: #002b55;  /* Fundo secundário para caixas e blocos */
+        }
+
+.container-item-midia img {
+  width: 100%;       /* Obriga a imagem a ocupar toda a largura do bloco pai */
+  max-width: 100%;   /* Impede que ela ultrapasse os limites */
+  height: auto;      /* Mantém a proporção perfeita (sem achatar) */
+  display: block;    /* Remove pequenos espaços em branco abaixo da imagem */
+  margin: 0 auto;    /* Centraliza os gráficos se o bloco for maior */
+}
+.grid-graficos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Organiza em colunas no PC, vira lista no celular */
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Controla os blocos individuais de cada imagem */
+.container-item-midia {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Garante a responsividade perfeita das imagens */
+.container-item-midia img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; /* Evita que o gráfico seja cortado */
+    border-radius: 4px;
+}
+/* 2. Regra Específica para o Logotipo (para não distorcer o topo) */
+.logo img {
+  max-height: 50px;  /* Mantém o limite de altura que você definiu */
+  width: auto;       /* Deixa a largura se ajustar proporcionalmente */
+  display: inline-block;
+  vertical-align: middle;
+}
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 2. CONFIGURAÇÕES BASE E RESET */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--cor-texto-escuro);
+            background-color: var(--cor-fundo-escuro);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 3. MENU DE NAVEGAÇÃO SEMÂNTICO E RESPONSIVO */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #00152B; /* Fundo levemente mais escuro que o body para contraste */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--cor-texto-claro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1010;
+        }
+
+        .menu-toggle .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--cor-texto-claro);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--cor-texto-escuro);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+        }
+
+        .nav-links button.active {
+            color: var(--cor-texto-claro);
+            background-color: var(--cor-azul-indigo);
+        }
+
+        .nav-links button:hover:not(.active) {
+            color: var(--cor-azul-claro);
+        }
+
+        /* 4. CABEÇALHO PRINCIPAL (HERO BANNER) */
+        .hero {
+            background: linear-gradient(135deg, #00152B, #000B18);
+            color: var(--cor-texto-claro);
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-laranja);
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* 5. GERENCIADOR DE ABAS */
+        .page-section {
+            display: none; 
+        }
+
+        .page-section.active {
+            display: block; 
+        }
+
+        /* 6. CONTEÚDO E GRID RESPONSIVO */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .bloco-texto {
+            margin-bottom: 3.5rem;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--cor-texto-claro);
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            border-left: 6px solid var(--cor-azul-claro);
+            padding-left: 1rem;
+            line-height: 1.3;
+        }
+
+        h3.subtopico {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            color: var(--cor-azul-claro);
+            margin: 1.5rem 0 0.5rem 0;
+            text-transform: uppercase;
+        }
+
+        .paragrafo-grande {
+            font-size: 1.1rem; 
+            color: #c4c7c5;
+            text-align: justify;
+            margin-bottom: 1.25rem;
+        }
+
+        .caixa-destaque {
+            background-color: var(--cor-fundo-suave);
+            border-right: 6px solid var(--cor-vermelha);
+            border-left: 6px solid var(--cor-vermelha);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 4px;
+        }
+
+        .caixa-destaque h3 {
+            color: #ff6b5b; /* Ajuste suave do vermelho para melhor leitura no escuro */
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Estilização para dados estatísticos inline ou blocos */
+        .bloco-estatistico {
+            background: linear-gradient(135deg, #00254A, #001E3D);
+            border-left: 6px solid var(--cor-azul-indigo);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .numero-destaque {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: var(--cor-azul-claro);
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .grid-estrategia {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .card-passo {
+            background: #00254A;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 4px solid var(--cor-laranja);
+            border-radius: 6px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-passo h3 {
+            color: var(--cor-texto-claro);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .card-passo p {
+            font-size: 1.05rem;
+            text-align: justify;
+            color: #c4c7c5;
+        }
+
+        /* Estilos específicos para imagens e legendas se adaptarem ao escuro */
+        .container-item-midia {
+            margin-top: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .legenda-midia {
+            color: #a8aaad;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .numero-estatistico {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .color-vermelho { color: #ff6b5b; }
+        .color-laranja { color: var(--cor-laranja); }
+        .color-azul { color: var(--cor-azul-claro); }
+        .rotulo-estatistico { color: #c4c7c5; font-size: 0.95rem; }
+
+        /* 7. RODAPÉ */
+        footer {
+            background-color: #00152B;
+            color: #a8aaad;
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.95rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--cor-azul-claro);
+        }
+
+        /* 8. MEDIA QUERIES (RESPONSIVIDADE COMPLETA) */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                background-color: #00152B;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 60px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                box-shadow: -4px 0 10px rgba(0,0,0,0.4);
+                transition: right 0.4s ease;
+                z-index: 999;
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin-left: 0;
+                margin-bottom: 1.5rem;
+                width: 100%;
+            }
+
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            .paragrafo-grande { font-size: 1.05rem; }
+            .bloco-estatistico { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .navbar { padding: 1rem; }
+            .container { padding: 2rem 1rem; }
+            .caixa-destaque { padding: 1.5rem; }
+            .card-passo { padding: 1.5rem; }
+            .paragrafo-grande { text-align: left; }
+        }
